@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage ('Pre-step') {
       steps {
-        echo 'Running Pre-step' > abc.txt
+        echo 'Running Pre-step'
+        sh "echo 123 > abc.txt"
       }
     }
     stage ('Build') {
