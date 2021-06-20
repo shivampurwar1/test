@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                sh 'wget https://github.com/shivampurwar1/test/blob/main/hello_world.py'
+                sh 'cat hello_world.py'
             }
         }
         stage('Build Docker Image') {
