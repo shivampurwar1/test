@@ -3,4 +3,4 @@ APP = Flask(__name__)
 
 @APP.route('/')
 def hello_world():
-    return 'Hello, World! Docker'
+    return 'Hello, World! Docker ! Canary'
