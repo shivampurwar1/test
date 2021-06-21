@@ -3,6 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = "purwar/my-app-hello"
     }
+    
     stages {
         stage('Build') {
             steps {
