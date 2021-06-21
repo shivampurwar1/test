@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_IMAGE_NAME = "purwar/my-app-hello"
+    }
     stages {
         stage('Build') {
             steps {
@@ -13,7 +16,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("purwar/my-app-hello")
+                    app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
@@ -41,7 +44,11 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                //Deploy to kubernetes
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'train-schedule-kube.yml',
+                    enableConfigSubstitution: true
+                )
             }
         }
       
