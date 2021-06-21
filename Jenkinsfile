@@ -48,7 +48,7 @@ pipeline {
             steps {
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
-                    configs: 'hello-app-kube.yml',
+                    configs: 'hello-app-kube-canary.yml',
                     enableConfigSubstitution: true
                 )
             }
